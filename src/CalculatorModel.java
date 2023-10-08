@@ -23,7 +23,7 @@ public class CalculatorModel {
 	//think about adding swapC and addC if needed
 	public void pushA() {this.pushC(accumulateur);}
 	public void clearA() {accumulateur=Float.NaN;}
-	//We'll probably change this function to link it with the interface later on c
+	//We'll probably change this function to link it with the interface later on 
 	public void showA() {System.out.println(accumulateur);}
 
 }
