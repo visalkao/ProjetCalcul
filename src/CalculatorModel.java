@@ -1,4 +1,5 @@
 import java.util.*;
+//put the interface in another file 
 interface CalculatrorModelInterface{
 	float pushC(float a);
 	public float popC();
@@ -20,6 +21,7 @@ public class CalculatorModel implements CalculatrorModelInterface {
 	public float addC() {
 		accumulateur=this.popC();
 		accumulateur+=this.popC();
+		this.pushA();
 		//think of what to do if the pile is vide 
 		//System.out.println("accumulateuuur"+accumulateur);
 		return accumulateur;
@@ -27,6 +29,7 @@ public class CalculatorModel implements CalculatrorModelInterface {
 	public float substractC() {
 		accumulateur=this.popC();
 		accumulateur-=this.popC();
+		this.pushA();
 		//think of what to do if the pile is vide 
 		//System.out.println("accumulateuuur"+accumulateur);
 		return accumulateur;
@@ -34,6 +37,7 @@ public class CalculatorModel implements CalculatrorModelInterface {
 	public float multiplyC() {
 		accumulateur=this.popC();
 		accumulateur*=this.popC();
+		this.pushA();
 		//think of what to do if the pile is vide 
 		System.out.println("accumulateuuur"+accumulateur);
 		return accumulateur;
@@ -41,6 +45,7 @@ public class CalculatorModel implements CalculatrorModelInterface {
 	public float divideC() {
 		accumulateur=this.popC();
 		accumulateur/=this.popC();
+		this.pushA();
 		//think of what to do if the pile is vide 
 		//System.out.println("accumulateuuur"+accumulateur);
 		return accumulateur;
