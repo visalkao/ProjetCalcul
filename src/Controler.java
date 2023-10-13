@@ -6,6 +6,7 @@ public class Controler {
 		C.pushC(5);
 		C.pushC(3);
 		C.pushC(2);
+		C.multiplyC();
 		System.out.println(C.peekC());
 		C.pushC(9);
 		C.pushC(11);

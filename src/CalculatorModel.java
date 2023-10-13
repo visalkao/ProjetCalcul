@@ -17,6 +17,34 @@ public class CalculatorModel implements CalculatrorModelInterface {
 	public float pushC(float a) {
 		pile.push(a);
 		return a;}
+	public float addC() {
+		accumulateur=this.popC();
+		accumulateur+=this.popC();
+		//think of what to do if the pile is vide 
+		//System.out.println("accumulateuuur"+accumulateur);
+		return accumulateur;
+	}
+	public float substractC() {
+		accumulateur=this.popC();
+		accumulateur-=this.popC();
+		//think of what to do if the pile is vide 
+		//System.out.println("accumulateuuur"+accumulateur);
+		return accumulateur;
+	}
+	public float multiplyC() {
+		accumulateur=this.popC();
+		accumulateur*=this.popC();
+		//think of what to do if the pile is vide 
+		System.out.println("accumulateuuur"+accumulateur);
+		return accumulateur;
+	}
+	public float divideC() {
+		accumulateur=this.popC();
+		accumulateur/=this.popC();
+		//think of what to do if the pile is vide 
+		//System.out.println("accumulateuuur"+accumulateur);
+		return accumulateur;
+	}
 	//instead of drop we'll use popC
 	public float popC() {
 		try {return pile.pop();}
