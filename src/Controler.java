@@ -9,10 +9,12 @@ public class Controler {
 		System.out.println(C.peekC());
 		C.pushC(9);
 		C.pushC(11);
+		System.out.println(C.peekC());
 		C.popC();
 		C.clearC();
-		System.out.println(C.peekC());
-
+//		System.out.println(C.peekC());
+		C.popC();
+//		System.out.println(C.peekC());
 	}
 
 }

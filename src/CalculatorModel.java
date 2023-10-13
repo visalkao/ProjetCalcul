@@ -1,5 +1,12 @@
 import java.util.*;
-public class CalculatorModel {
+interface CalculatrorModelInterface{
+	float pushC(float a);
+	public float popC();
+	public float peekC();
+	public void clearC();
+	
+}
+public class CalculatorModel implements CalculatrorModelInterface {
 	private float accumulateur;
 	private Stack<Float> pile;
 	
