@@ -290,7 +290,11 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
- 
+import javafx.scene.control.cell.ComboBoxListCell;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 public class View extends Application {
     public static void main(String[] args) {
         launch(args);
@@ -299,43 +303,116 @@ public class View extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("RPN Calculator");
+        
+        VBox vbox = new VBox(1);
+        Text[] txt = new Text[5];
+        for (int i = 0; i < 5; i++) 
+        { 	txt[i]= new Text("0.00");
+        	StackPane s=new StackPane();
+        	Rectangle rectangle=new Rectangle(475,30);
+        	rectangle.setFill(Color.LIGHTGREY);
+            s.getChildren().addAll(rectangle,txt[i]); 
+            vbox.getChildren().add(s);
+            
+        } 
+
+        
+        StackPane root = new StackPane();
+        //root.getChildren().add(btn);
+//        primaryStage.setScene(new Scene(vbox, 300, 250));
+//        primaryStage.show();
+//        
+        
+//        primaryStage.setScene(null);
+        
+        
+        
         Button[] btn = new Button[10];
-        for(int i=1;i<10;i++) {
-        	btn[i]= new Button();
-        	int finalI = i;
-            btn[i].setText(Integer.toString(i));
-            int row=i/3;
-            int col=i%3;
-            GridPane.setRowIndex(btn[i], row);
-            GridPane.setColumnIndex(btn[i], col);
-            btn[i].setPrefHeight(100);
-            btn[i].setPrefWidth(200);
-            btn[i].setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    System.out.println("Button" + finalI + "clicked!");
-                }
-            });
+        for(int i=0;i<10;i++) {
+        	
+	        	btn[i]= new Button();
+	        	int finalI = i;
+	            btn[i].setText(Integer.toString(i));
+	            int row,col;
+	       if(i>0) {
+	           row=(i-1)/3;
+	           col=(i-1)%3;
+	       }else {
+	    	   row=3;
+	    	   col=0;
+	       }
+	            GridPane.setRowIndex(btn[i], row);
+	            GridPane.setColumnIndex(btn[i], col);
+	            btn[i].setPrefHeight(100);
+	            btn[i].setPrefWidth(100);
+	            btn[i].setOnAction(new EventHandler<ActionEvent>() {
+	                @Override
+	                public void handle(ActionEvent event) {
+	                    System.out.println("Button" + finalI + "clicked!");
+	                }
+	            });
+        	
+	       
         }
-    
-//        StackPane root = new StackPane();
-//        for(int i=0; i<10;i++)
-//        {
-//        	 root.getChildren().add(btn[i]);
-//        }
-//        	 primaryStage.setScene(new Scene(root, 30, 250));
-//             primaryStage.show();
+        Button commaBtn = new Button(); 
+        commaBtn.setText(",");
+        commaBtn.setPrefHeight(100);
+        commaBtn.setPrefWidth(100);
+        GridPane.setRowIndex(commaBtn, 3);
+        GridPane.setColumnIndex(commaBtn, 1); 
+        commaBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Button ',' clicked!");
+            }
+        });
+        
+        
+        Button changeSign = new Button(); 
+        changeSign.setText("+/-");
+        changeSign.setPrefHeight(100);
+        changeSign.setPrefWidth(100);
+        GridPane.setRowIndex(changeSign, 3);
+        GridPane.setColumnIndex(changeSign, 2); 
+        changeSign.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                
+            }
+        });
+        
+        
+        Button plusSign = new Button(); 
+        plusSign.setText("+");
+        plusSign.setPrefHeight(10);
+        plusSign.setPrefWidth(100);
+        GridPane.setRowIndex(plusSign, 3);
+        GridPane.setColumnIndex(plusSign, 3); 
+        plusSign.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                
+            }
+        });
+//        
+//        
+//        
+
 //        
         GridPane grid = new GridPane();
         
         grid.setVgap(10);
         grid.setPadding(new Insets(10));
         grid.setHgap(10);
-	    for(int i=1; i<10;i++)
+	    for(int i=0; i<10;i++)
 	    {
 	    	grid.getChildren().add(btn[i]);
 	    }
-	    primaryStage.setScene(new Scene(grid, 500, 500));
+    	grid.getChildren().add(commaBtn);
+    	grid.getChildren().add(changeSign);
+    	grid.getChildren().add(plusSign);
+    	vbox.getChildren().add(grid);
+	    primaryStage.setScene(new Scene(vbox, 500, 500));
 	    primaryStage.show();
     }
 }
