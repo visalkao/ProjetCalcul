@@ -278,7 +278,7 @@
 //        }
 //    }
 //}
-
+import javafx.scene.layout.HBox;
 import javax.swing.text.html.ListView;
 
 import javafx.application.Application;
@@ -384,22 +384,103 @@ public class View extends Application {
         
         Button plusSign = new Button(); 
         plusSign.setText("+");
-        plusSign.setPrefHeight(10);
+        plusSign.setPrefHeight(63.33);
         plusSign.setPrefWidth(100);
-        GridPane.setRowIndex(plusSign, 3);
-        GridPane.setColumnIndex(plusSign, 3); 
+        GridPane.setRowIndex(plusSign, 2);
+        GridPane.setColumnIndex(plusSign, 1); 
         plusSign.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 
             }
         });
+        
+        
+        Button minusSign = new Button(); 
+        minusSign.setText("-");
+        minusSign.setPrefHeight(63.33);
+        minusSign.setPrefWidth(100);
+        GridPane.setRowIndex(minusSign, 3);
+        GridPane.setColumnIndex(minusSign, 1); 
+        minusSign.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                
+            }
+        });
+        
+        
+        Button multipleSign = new Button(); 
+        multipleSign.setText("x");
+        multipleSign.setPrefHeight(63.33);
+        multipleSign.setPrefWidth(100);
+        GridPane.setRowIndex(multipleSign, 4);
+        GridPane.setColumnIndex(multipleSign, 1); 
+        multipleSign.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                
+            }
+        });
+        
+        
+        Button divideSign = new Button(); 
+        divideSign.setText("/");
+        divideSign.setPrefHeight(63.33);
+        divideSign.setPrefWidth(100);
+        GridPane.setRowIndex(divideSign, 5);
+        GridPane.setColumnIndex(divideSign, 1); 
+        divideSign.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                
+            }
+        });
+        
+        
+        Button addtoStackSign = new Button(); 
+        addtoStackSign.setText("<>");
+        addtoStackSign.setPrefHeight(63.33);
+        addtoStackSign.setPrefWidth(100);
+        GridPane.setRowIndex(addtoStackSign, 6);
+        GridPane.setColumnIndex(addtoStackSign, 1); 
+        addtoStackSign.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                
+            }
+        });
+        
+        
+        Button backSpaceSign = new Button(); 
+        backSpaceSign.setText("<-");
+        backSpaceSign.setPrefHeight(63.33);
+        backSpaceSign.setStyle("-fx-background-color: #8B0000; -fx-text-fill: white;");
+        backSpaceSign.setPrefWidth(100);
+        GridPane.setRowIndex(backSpaceSign, 1);
+        GridPane.setColumnIndex(backSpaceSign, 1); 
+        backSpaceSign.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                
+            }
+        });
+        
+        
+        
+        
+      
 //        
 //        
 //        
 
 //        
         GridPane grid = new GridPane();
+        GridPane newgrid = new GridPane();
+        
+        newgrid.setVgap(12);
+        newgrid.setPadding(new Insets(10));
+        newgrid.setHgap(10);
         
         grid.setVgap(10);
         grid.setPadding(new Insets(10));
@@ -410,8 +491,20 @@ public class View extends Application {
 	    }
     	grid.getChildren().add(commaBtn);
     	grid.getChildren().add(changeSign);
-    	grid.getChildren().add(plusSign);
-    	vbox.getChildren().add(grid);
+    	newgrid.getChildren().add(plusSign);
+    	newgrid.getChildren().add(minusSign);
+    	newgrid.getChildren().add(multipleSign);
+    	newgrid.getChildren().add(divideSign);
+    	newgrid.getChildren().add(addtoStackSign);
+    	newgrid.getChildren().add(backSpaceSign);
+//    	vbox.getChildren().add(grid);
+    	HBox hbox = new HBox();
+    	
+    	hbox.getChildren().add(grid);
+    	hbox.getChildren().add(newgrid);
+    	
+//    	newgrid.getChildren().add(grid);
+    	vbox.getChildren().add(hbox);
 	    primaryStage.setScene(new Scene(vbox, 500, 500));
 	    primaryStage.show();
     }
