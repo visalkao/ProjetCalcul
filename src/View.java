@@ -299,6 +299,16 @@ public class View extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    public Integer convertToValue(Text inputText) {
+    	String tmptext = inputText.getText();
+    	if(tmptext=="0.00")
+    	{
+    		tmptext = "0";
+    	}
+    	int parsedValue = Integer.parseInt(tmptext);
+    	
+    	return parsedValue;
+    }
     
     @Override
     public void start(Stage primaryStage) {
@@ -317,7 +327,7 @@ public class View extends Application {
         } 
 
         
-        StackPane root = new StackPane();
+//        StackPane root = new StackPane();
         //root.getChildren().add(btn);
 //        primaryStage.setScene(new Scene(vbox, 300, 250));
 //        primaryStage.show();
@@ -348,7 +358,18 @@ public class View extends Application {
 	            btn[i].setOnAction(new EventHandler<ActionEvent>() {
 	                @Override
 	                public void handle(ActionEvent event) {
-	                    System.out.println("Button" + finalI + "clicked!");
+	                	
+//	                	Integer parsedValue = convertToValue(txt[4]);
+	                	
+//	                	System.out.println(parsedValue);
+	                	System.out.println("Button" + finalI + "clicked!");
+	                	
+	                	 if (txt[4].getText() == "0.00") {
+	                         txt[4].setText(Integer.toString(finalI));
+	                     }else {
+	                    	 txt[4].setText(txt[4].getText() + finalI);
+	                     }
+	                   
 	                }
 	            });
         	
@@ -364,6 +385,8 @@ public class View extends Application {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Button ',' clicked!");
+                txt[4].setText(txt[4].getText() + '.');
+//                txt[4].setText(Integer.toString(0));
             }
         });
         
@@ -377,7 +400,8 @@ public class View extends Application {
         changeSign.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                
+//                txt[4].setText(Integer.toString(Integer.parseInt()));
+            	txt[4].setText(Integer.toString(convertToValue(txt[4]) * (-1)));
             }
         });
         
