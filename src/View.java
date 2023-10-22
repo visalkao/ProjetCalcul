@@ -309,6 +309,7 @@ public class View extends Application {
     	
     	return parsedValue;
     }
+
     
     @Override
     public void start(Stage primaryStage) {
@@ -385,7 +386,15 @@ public class View extends Application {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Button ',' clicked!");
-                txt[4].setText(txt[4].getText() + '.');
+                String text = txt[4].getText();
+                boolean existVirgule = text.indexOf('.') >= 0;
+                if(existVirgule)
+                {
+                	
+                }else {
+                	txt[4].setText(txt[4].getText() + '.');
+                }
+                
 //                txt[4].setText(Integer.toString(0));
             }
         });
