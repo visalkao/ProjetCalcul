@@ -401,7 +401,7 @@ public class View extends Application {
             @Override
             public void handle(ActionEvent event) {
 //                txt[4].setText(Integer.toString(Integer.parseInt()));
-            	txt[4].setText(Integer.toString(convertToValue(txt[4]) * (-1)));
+            	txt[4].setText(Float.toString(Float.parseFloat(txt[4].getText()) * (-1)));
             }
         });
         
