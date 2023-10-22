@@ -44,9 +44,14 @@ public class CalculatorModel implements CalculatrorModelInterface {
 	}
 	public float divideC() {
 		accumulateur=this.popC();
-		accumulateur=this.popC() / accumulateur;
+		if(accumulateur != 0)
+		{
+			accumulateur=this.popC() / accumulateur;
+		}else {
+			System.out.println("Can't divide by 0");
+		}
+		
 		this.pushA();
-		System.out.println("accumulateuuur"+accumulateur);
 		//think of what to do if the pile is vide 
 		//System.out.println("accumulateuuur"+accumulateur);
 		return accumulateur;
@@ -72,7 +77,7 @@ public class CalculatorModel implements CalculatrorModelInterface {
 	public void pushA() {this.pushC(accumulateur);}
 	public void clearA() {accumulateur=Float.NaN;}
 	//We'll probably change this function to link it with the interface later on 
-	public void showA() {System.out.println(accumulateur);}
+	public float showA() {return accumulateur;}
 	public int sizeC() {return pile.size();}
 
 }
