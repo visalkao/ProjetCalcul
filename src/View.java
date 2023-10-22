@@ -30,7 +30,13 @@ public class View extends Application {
     	
     	return parsedValue;
     }
-    
+    public void changetxt(Text[] txt) {
+    	txt[4].setText("0.00");
+    	txt[3].setText(Float.toString(C.peekC(C.sizeC()-1)));
+    	for (int i=0;i<3;i++) {
+    		txt[i].setText(Float.toString(C.peekC(C.sizeC()-4+i)));
+    	}
+    }
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("RPN Calculator");
@@ -100,8 +106,15 @@ public class View extends Application {
         commaBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Button ',' clicked!");
-                txt[4].setText(txt[4].getText() + '.');
+            	 System.out.println("Button ',' clicked!");
+                 String text = txt[4].getText();
+                 boolean existVirgule = text.indexOf('.') >= 0;
+                 if(existVirgule)
+                 {
+                 	
+                 }else {
+                 	txt[4].setText(txt[4].getText() + '.');
+                 }
             }
         });
         
@@ -115,7 +128,7 @@ public class View extends Application {
         changeSign.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-            	//recheck why he put integer
+            	txt[4].setText(Float.toString(Float.parseFloat(txt[4].getText()) * (-1)));
             	//txt[4].setText(Integer.toString(convertToValue(txt[4]) * (-1)));
                 
             }
@@ -131,12 +144,9 @@ public class View extends Application {
         plusSign.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-            	C.addC();
+            	System.out.println(C.addC());
             	//think of putting all of this in a function
-            	for(int i = 1; i < 5; i++) {
-            		if(i<C.sizeC()) {txt[i].setText(Float.toString(C.peekC(C.sizeC())));}
-            		else {}
-            	} 
+            	changetxt(txt);
                 
             }
         });
@@ -168,6 +178,7 @@ public class View extends Application {
             @Override
             public void handle(ActionEvent event) {
                 C.multiplyC();
+                changetxt(txt);
             }
         });
         
@@ -182,6 +193,7 @@ public class View extends Application {
             @Override
             public void handle(ActionEvent event) {
             	C.divideC();
+            	changetxt(txt);
                 
             }
         });
@@ -199,7 +211,7 @@ public class View extends Application {
             	String text0 = txt[4].getText();
             	float float0= Float.parseFloat(text0);
             	C.pushC(float0);
-            	txt[4].setText("0.00");
+            	changetxt(txt);
             	System.out.println(C.peekC());
             	
                 
@@ -218,7 +230,7 @@ public class View extends Application {
             @Override
             public void handle(ActionEvent event) {
             	C.clearC();
-            	System.out.println(C.peekC());
+            	changetxt(txt);
                 
             }
         });
