@@ -296,6 +296,7 @@ import javafx.scene.text.Text;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 public class View extends Application {
+	CalculatorModel C=new CalculatorModel();
     public static void main(String[] args) {
         launch(args);
     }
@@ -424,7 +425,12 @@ public class View extends Application {
         plusSign.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                
+            	C.addC();
+            	//think of putting all of this in a function
+            	for(int i = 1; i < 5; i++) {
+            		if(i<C.sizeC()) {txt[i].setText(Float.toString(C.peekC(C.sizeC())));}
+            		else {}
+            	} 
             }
         });
         
@@ -438,7 +444,7 @@ public class View extends Application {
         minusSign.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                
+            	System.out.println(C.substractC());
             }
         });
         
@@ -452,7 +458,7 @@ public class View extends Application {
         multipleSign.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                
+            	 C.multiplyC();
             }
         });
         
@@ -466,7 +472,7 @@ public class View extends Application {
         divideSign.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                
+            	C.divideC();
             }
         });
         
@@ -480,7 +486,11 @@ public class View extends Application {
         addtoStackSign.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                
+            	String text0 = txt[4].getText();
+            	float float0= Float.parseFloat(text0);
+            	C.pushC(float0);
+            	txt[4].setText("0.00");
+            	System.out.println(C.peekC());
             }
         });
         
@@ -495,7 +505,8 @@ public class View extends Application {
         backSpaceSign.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                
+            	C.clearC();
+            	System.out.println(C.peekC());
             }
         });
         

@@ -28,7 +28,7 @@ public class CalculatorModel implements CalculatrorModelInterface {
 	}
 	public float substractC() {
 		accumulateur=this.popC();
-		accumulateur-=this.popC();
+		accumulateur= this.popC() - accumulateur;
 		this.pushA();
 		//think of what to do if the pile is vide 
 		//System.out.println("accumulateuuur"+accumulateur);
@@ -44,8 +44,9 @@ public class CalculatorModel implements CalculatrorModelInterface {
 	}
 	public float divideC() {
 		accumulateur=this.popC();
-		accumulateur/=this.popC();
+		accumulateur=this.popC() / accumulateur;
 		this.pushA();
+		System.out.println("accumulateuuur"+accumulateur);
 		//think of what to do if the pile is vide 
 		//System.out.println("accumulateuuur"+accumulateur);
 		return accumulateur;
@@ -59,11 +60,19 @@ public class CalculatorModel implements CalculatrorModelInterface {
 		try {return pile.peek();}
 		catch(EmptyStackException e) {System.out.println("la pile est vide");return Float.NaN;}
 	}
+	public float peekC(int a) {
+		try {return pile.get(a);}
+		catch(EmptyStackException e) {System.out.println("la pile est vide");return Float.NaN;}
+		catch (IndexOutOfBoundsException e) {System.out.println("indexe " + a + " n existe pas");
+	        return Float.NaN;
+	    }
+	}
 	public void clearC() {pile.clear();}
 	//think about adding swapC and addC if needed
 	public void pushA() {this.pushC(accumulateur);}
 	public void clearA() {accumulateur=Float.NaN;}
 	//We'll probably change this function to link it with the interface later on 
 	public void showA() {System.out.println(accumulateur);}
+	public int sizeC() {return pile.size();}
 
 }
