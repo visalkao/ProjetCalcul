@@ -32,13 +32,7 @@ public class View extends Application {
     	
     	return parsedValue;
     }
-    public void changetxt(Text[] txt) {
-    	txt[4].setText("0.00");
-    	txt[3].setText(Float.toString(C.peekC(C.sizeC()-1)));
-    	for (int i=0;i<3;i++) {
-    		txt[i].setText(Float.toString(C.peekC(C.sizeC()-4+i)));
-    	}
-    }
+    
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("RPN Calculator");
@@ -86,12 +80,7 @@ public class View extends Application {
 	            GridPane.setColumnIndex(btn[i], col);
 	            btn[i].setPrefHeight(100);
 	            btn[i].setPrefWidth(100);
-	            btn[i].setOnAction(new EventHandler<ActionEvent>() {
-	                @Override
-	                public void handle(ActionEvent event) {
-	               
-	                }
-	            });
+	           
         	
 	       
         }
@@ -101,20 +90,7 @@ public class View extends Application {
         commaBtn.setPrefWidth(100);
         GridPane.setRowIndex(commaBtn, 3);
         GridPane.setColumnIndex(commaBtn, 1); 
-        commaBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            	 System.out.println("Button ',' clicked!");
-                 String text = txt[4].getText();
-                 boolean existVirgule = text.indexOf('.') >= 0;
-                 if(existVirgule)
-                 {
-                 	
-                 }else {
-                 	txt[4].setText(txt[4].getText() + '.');
-                 }
-            }
-        });
+   
         
         
         Button changeSign = new Button(); 
@@ -123,14 +99,7 @@ public class View extends Application {
         changeSign.setPrefWidth(100);
         GridPane.setRowIndex(changeSign, 3);
         GridPane.setColumnIndex(changeSign, 2); 
-        changeSign.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            	txt[4].setText(Float.toString(Float.parseFloat(txt[4].getText()) * (-1)));
-            	//txt[4].setText(Integer.toString(convertToValue(txt[4]) * (-1)));
-                
-            }
-        });
+       
         
         
         Button plusSign = new Button(); 
@@ -139,13 +108,7 @@ public class View extends Application {
         plusSign.setPrefWidth(100);
         GridPane.setRowIndex(plusSign, 2);
         GridPane.setColumnIndex(plusSign, 1); 
-        plusSign.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            	
-                
-            }
-        });
+   
         
         
         Button minusSign = new Button(); 
@@ -154,14 +117,7 @@ public class View extends Application {
         minusSign.setPrefWidth(100);
         GridPane.setRowIndex(minusSign, 3);
         GridPane.setColumnIndex(minusSign, 1); 
-        minusSign.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            	System.out.println(C.substractC());
-            	
-                
-            }
-        });
+  
         
         
         Button multipleSign = new Button(); 
@@ -170,13 +126,7 @@ public class View extends Application {
         multipleSign.setPrefWidth(100);
         GridPane.setRowIndex(multipleSign, 4);
         GridPane.setColumnIndex(multipleSign, 1); 
-        multipleSign.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                C.multiplyC();
-                changetxt(txt);
-            }
-        });
+     
         
         
         Button divideSign = new Button(); 
@@ -185,14 +135,7 @@ public class View extends Application {
         divideSign.setPrefWidth(100);
         GridPane.setRowIndex(divideSign, 5);
         GridPane.setColumnIndex(divideSign, 1); 
-        divideSign.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            	C.divideC();
-            	changetxt(txt);
-                
-            }
-        });
+     
         
         
         Button addtoStackSign = new Button(); 
@@ -201,18 +144,7 @@ public class View extends Application {
         addtoStackSign.setPrefWidth(100);
         GridPane.setRowIndex(addtoStackSign, 6);
         GridPane.setColumnIndex(addtoStackSign, 1); 
-        addtoStackSign.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            	String text0 = txt[4].getText();
-            	float float0= Float.parseFloat(text0);
-            	C.pushC(float0);
-            	changetxt(txt);
-            	System.out.println(C.peekC());
-            	
-                
-            }
-        });
+     
         
         
         Button backSpaceSign = new Button(); 
@@ -222,14 +154,7 @@ public class View extends Application {
         backSpaceSign.setPrefWidth(100);
         GridPane.setRowIndex(backSpaceSign, 1);
         GridPane.setColumnIndex(backSpaceSign, 1); 
-        backSpaceSign.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            	C.clearC();
-            	changetxt(txt);
-                
-            }
-        });
+     
         
         
         
@@ -272,7 +197,7 @@ public class View extends Application {
     	vbox.getChildren().add(hbox);
     	
     	Controler = new Controler(C, txt);
-        Controler.setButtonHandlers(btn, plusSign, addtoStackSign, backSpaceSign);
+        Controler.setButtonHandlers(btn, plusSign, minusSign, multipleSign, divideSign, addtoStackSign, backSpaceSign, commaBtn, changeSign);
         
 	    primaryStage.setScene(new Scene(vbox, 500, 500));
 	    primaryStage.show();
