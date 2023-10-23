@@ -15,7 +15,9 @@ import javafx.scene.shape.Rectangle;
 
 
 public class View extends Application {
-	CalculatorModel C=new CalculatorModel();
+//	CalculatorModel C=new CalculatorModel();
+	Controler C = new Controler();
+	
     public static void main(String[] args) {
         launch(args);
     }
@@ -151,9 +153,10 @@ public class View extends Application {
             	System.out.println(C.addC());
             	//think of putting all of this in a function
             	changetxt(txt);
-                
+//                controler.test();
             }
         });
+        
         
         
         Button minusSign = new Button(); 
@@ -281,4 +284,7 @@ public class View extends Application {
 	    primaryStage.setScene(new Scene(vbox, 500, 500));
 	    primaryStage.show();
     }
+//    public Button button() {
+//    	return plusSign;
+//    }
 }
