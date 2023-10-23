@@ -15,9 +15,9 @@ import javafx.scene.shape.Rectangle;
 
 
 public class View extends Application {
-//	CalculatorModel C=new CalculatorModel();
-	Controler C = new Controler();
-	
+	CalculatorModel C = new CalculatorModel();
+	private Text displayText;
+	private Controler Controler;
     public static void main(String[] args) {
         launch(args);
     }
@@ -37,15 +37,12 @@ public class View extends Application {
     	txt[3].setText(Float.toString(C.peekC(C.sizeC()-1)));
     	for (int i=0;i<3;i++) {
     		txt[i].setText(Float.toString(C.peekC(C.sizeC()-4+i)));
-    		if(txt[i].getText() == "NaN")
-    		{
-    			txt[i].setText("0.00");
-    		}
     	}
     }
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("RPN Calculator");
+        displayText = new Text("0.00");
         
         VBox vbox = new VBox(1);
         Text[] txt = new Text[5];
@@ -70,6 +67,7 @@ public class View extends Application {
         
         
  //think of adding try catch blocks to the code 
+//        Button[] btn = new Button[10];
         Button[] btn = new Button[10];
         for(int i=0;i<10;i++) {
         	
@@ -91,13 +89,7 @@ public class View extends Application {
 	            btn[i].setOnAction(new EventHandler<ActionEvent>() {
 	                @Override
 	                public void handle(ActionEvent event) {
-	                	System.out.println("Button" + finalI + "clicked!");
-	                	
-	                	 if (txt[4].getText() == "0.00") {
-	                         txt[4].setText(Integer.toString(finalI));
-	                     }else {
-	                    	 txt[4].setText(txt[4].getText() + finalI);
-	                     }
+	               
 	                }
 	            });
         	
@@ -150,13 +142,10 @@ public class View extends Application {
         plusSign.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-            	System.out.println(C.addC());
-            	//think of putting all of this in a function
-            	changetxt(txt);
-//                controler.test();
+            	
+                
             }
         });
-        
         
         
         Button minusSign = new Button(); 
@@ -281,10 +270,11 @@ public class View extends Application {
     	
 //    	newgrid.getChildren().add(grid);
     	vbox.getChildren().add(hbox);
+    	
+    	Controler = new Controler(C, txt);
+        Controler.setButtonHandlers(btn, plusSign, addtoStackSign, backSpaceSign);
+        
 	    primaryStage.setScene(new Scene(vbox, 500, 500));
 	    primaryStage.show();
     }
-//    public Button button() {
-//    	return plusSign;
-//    }
 }
