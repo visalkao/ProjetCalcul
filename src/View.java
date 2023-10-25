@@ -93,7 +93,7 @@ public class View extends Application {
         
         Button plusSign = new Button(); 
         plusSign.setText("+");
-        plusSign.setPrefHeight(63.33);
+        plusSign.setPrefHeight(52.8);
         plusSign.setPrefWidth(100);
         GridPane.setRowIndex(plusSign, 2);
         GridPane.setColumnIndex(plusSign, 1); 
@@ -102,7 +102,7 @@ public class View extends Application {
         
         Button minusSign = new Button(); 
         minusSign.setText("-");
-        minusSign.setPrefHeight(63.33);
+        minusSign.setPrefHeight(52.8);
         minusSign.setPrefWidth(100);
         GridPane.setRowIndex(minusSign, 3);
         GridPane.setColumnIndex(minusSign, 1); 
@@ -111,7 +111,7 @@ public class View extends Application {
         
         Button multipleSign = new Button(); 
         multipleSign.setText("x");
-        multipleSign.setPrefHeight(63.33);
+        multipleSign.setPrefHeight(52.8);
         multipleSign.setPrefWidth(100);
         GridPane.setRowIndex(multipleSign, 4);
         GridPane.setColumnIndex(multipleSign, 1); 
@@ -120,7 +120,7 @@ public class View extends Application {
         
         Button divideSign = new Button(); 
         divideSign.setText("/");
-        divideSign.setPrefHeight(63.33);
+        divideSign.setPrefHeight(52.8);
         divideSign.setPrefWidth(100);
         GridPane.setRowIndex(divideSign, 5);
         GridPane.setColumnIndex(divideSign, 1); 
@@ -129,7 +129,7 @@ public class View extends Application {
         
         Button addtoStackSign = new Button(); 
         addtoStackSign.setText("Push");
-        addtoStackSign.setPrefHeight(63.33);
+        addtoStackSign.setPrefHeight(52.8);
         addtoStackSign.setPrefWidth(100);
         GridPane.setRowIndex(addtoStackSign, 6);
         GridPane.setColumnIndex(addtoStackSign, 1); 
@@ -138,7 +138,7 @@ public class View extends Application {
         
         Button backSpaceSign = new Button(); 
         backSpaceSign.setText("C");
-        backSpaceSign.setPrefHeight(63.33);
+        backSpaceSign.setPrefHeight(52.8);
         backSpaceSign.setStyle("-fx-background-color: #8B0000; -fx-text-fill: white;");
         backSpaceSign.setPrefWidth(100);
         GridPane.setRowIndex(backSpaceSign, 1);
@@ -146,7 +146,7 @@ public class View extends Application {
         
         Button swap = new Button(); 
         swap.setText("Swap");
-        swap.setPrefHeight(63.33);
+        swap.setPrefHeight(52.8);
         swap.setPrefWidth(100);
         GridPane.setRowIndex(swap, 7);
         GridPane.setColumnIndex(swap, 1); 
