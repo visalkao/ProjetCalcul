@@ -7,6 +7,7 @@ interface CalculatrorModelInterface{
 	public void clearC();
 	
 }
+
 public class CalculatorModel implements CalculatrorModelInterface {
 	private float accumulateur;
 	private Stack<Float> pile;

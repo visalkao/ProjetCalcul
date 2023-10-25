@@ -51,7 +51,7 @@ public class View extends Application {
         } 
 
         
-        StackPane root = new StackPane();
+//        StackPane root = new StackPane();
         //root.getChildren().add(btn);
 //        primaryStage.setScene(new Scene(vbox, 300, 250));
 //        primaryStage.show();

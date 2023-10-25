@@ -1,12 +1,48 @@
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class Controler {
     private CalculatorModel C;
     private Text[] txt;
+    private void openPopup() {
+        Stage popupStage = new Stage();
+        popupStage.setTitle("Error!");
+        Button closeButton = new Button("Close");
+        closeButton.setStyle("-fx-background-color: #8B0000; -fx-text-fill: white;");
+        Text txt = new Text();
+        txt.setText("We can't divide with 0");
+//        Rectangle rectangle=new Rectangle(475,30);
+        closeButton.setOnAction(e -> popupStage.close());
+        StackPane s1=new StackPane();
+        Rectangle rectangle1=new Rectangle(175,30);
+        
+        StackPane s2=new StackPane();
+        Rectangle rectangle2=new Rectangle(175,30);
+        
+        s1.getChildren().addAll(rectangle1,txt); 
+        s2.getChildren().addAll(rectangle2,closeButton); 
+        VBox popupLayout = new VBox();
+        popupLayout.getChildren().add(txt);
+        
+        
+        popupLayout.getChildren().add(closeButton);
 
+
+        Scene popupScene = new Scene(popupLayout, 50, 150);
+        popupStage.setScene(popupScene);
+
+        // To block interactions with the main window while the popup is open:
+
+
+        popupStage.show();
+    }
     public Controler(CalculatorModel C, Text[] txt) {
         this.C = C;
         this.txt = txt;
@@ -83,9 +119,13 @@ public class Controler {
             @Override
             public void handle(ActionEvent event) {
                
-        
-                	C.divideC();
+            	if(txt[4].getText() == "0" || txt[4].getText() == "0.00") {
+            		openPopup();
+            	}else {
+            		C.divideC();
                     changetxt(txt);
+            	}
+                	
         
             }
         });
