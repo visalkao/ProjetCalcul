@@ -62,6 +62,9 @@ public class Controler {
     			txt[i].setText("0.00");
     		}
     	}
+    	if(txt[3].getText() == "NaN") {
+    		txt[3].setText("0.00");
+    	}
     }
     public void setButtonHandlers(Button[] numberButtons, Button plusSign,Button sustractSign, Button multipleSign, 
     		Button divideSign, Button addToStackButton, Button clearButton, Button commaButton, Button changeSign) {
@@ -100,6 +103,7 @@ public class Controler {
                 	System.out.println(C.substractC());
                 	changetxt(txt);
                 	
+                	
               
             }
         });
@@ -118,12 +122,15 @@ public class Controler {
         divideSign.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-               
-            	if(txt[4].getText() == "0" || txt[4].getText() == "0.00") {
+            	System.out.print("txt3 = " + txt[2].getText());
+        		System.out.print("txt4 = " + txt[3].getText());
+            	if(txt[3].getText() == "0.0" || txt[3].getText() == "0.00") {
+            		
             		openPopup();
             	}else {
             		C.divideC();
                     changetxt(txt);
+                    
             	}
                 	
         
