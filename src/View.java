@@ -128,7 +128,7 @@ public class View extends Application {
         
         
         Button addtoStackSign = new Button(); 
-        addtoStackSign.setText("<>");
+        addtoStackSign.setText("Push");
         addtoStackSign.setPrefHeight(63.33);
         addtoStackSign.setPrefWidth(100);
         GridPane.setRowIndex(addtoStackSign, 6);
@@ -145,7 +145,7 @@ public class View extends Application {
         GridPane.setColumnIndex(backSpaceSign, 1); 
         
         Button swap = new Button(); 
-        swap.setText("swap");
+        swap.setText("Swap");
         swap.setPrefHeight(63.33);
         swap.setPrefWidth(100);
         GridPane.setRowIndex(swap, 7);
