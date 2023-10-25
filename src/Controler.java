@@ -67,7 +67,7 @@ public class Controler {
     	}
     }
     public void setButtonHandlers(Button[] numberButtons, Button plusSign,Button sustractSign, Button multipleSign, 
-    		Button divideSign, Button addToStackButton, Button clearButton, Button commaButton, Button changeSign) {
+    		Button divideSign, Button addToStackButton, Button clearButton, Button commaButton, Button changeSign, Button swap) {
         for (Button button : numberButtons) {
             button.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -177,6 +177,14 @@ public class Controler {
             @Override
             public void handle(ActionEvent event) {
             	C.clearC();
+            	changetxt(txt);
+            }
+        });
+        
+        swap.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	C.swapC();
             	changetxt(txt);
             }
         });

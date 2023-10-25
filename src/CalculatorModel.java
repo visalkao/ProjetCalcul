@@ -70,6 +70,13 @@ public class CalculatorModel implements CalculatrorModelInterface {
 	public void clearC() {pile.clear();}
 	//think about adding swapC and addC if needed
 	public void pushA() {this.pushC(accumulateur);}
+	public void swapC() {
+		float tmp;
+		accumulateur = this.popC();
+		tmp = this.popC();
+		this.pushC(accumulateur);
+		this.pushC(tmp);
+	}
 	public void clearA() {accumulateur=Float.NaN;}
 	//We'll probably change this function to link it with the interface later on 
 	public float showA() {return accumulateur;}

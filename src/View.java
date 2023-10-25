@@ -143,6 +143,13 @@ public class View extends Application {
         backSpaceSign.setPrefWidth(100);
         GridPane.setRowIndex(backSpaceSign, 1);
         GridPane.setColumnIndex(backSpaceSign, 1); 
+        
+        Button swap = new Button(); 
+        swap.setText("swap");
+        swap.setPrefHeight(63.33);
+        swap.setPrefWidth(100);
+        GridPane.setRowIndex(swap, 7);
+        GridPane.setColumnIndex(swap, 1); 
      
      
         GridPane grid = new GridPane();
@@ -167,6 +174,7 @@ public class View extends Application {
     	newgrid.getChildren().add(divideSign);
     	newgrid.getChildren().add(addtoStackSign);
     	newgrid.getChildren().add(backSpaceSign);
+    	newgrid.getChildren().add(swap);
 //    	vbox.getChildren().add(grid);
     	HBox hbox = new HBox();
     	
@@ -177,7 +185,7 @@ public class View extends Application {
     	vbox.getChildren().add(hbox);
     	
     	Controler = new Controler(C, txt);
-        Controler.setButtonHandlers(btn, plusSign, minusSign, multipleSign, divideSign, addtoStackSign, backSpaceSign, commaBtn, changeSign);
+        Controler.setButtonHandlers(btn, plusSign, minusSign, multipleSign, divideSign, addtoStackSign, backSpaceSign, commaBtn, changeSign, swap);
         
 	    primaryStage.setScene(new Scene(vbox, 500, 500));
 	    primaryStage.show();
