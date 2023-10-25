@@ -86,12 +86,10 @@ public class Controler {
                
                
                 	System.out.println(C.addC());
-                	//think of putting all of this in a function
+        
                 	changetxt(txt);
            
-                	
                 
-//                txt.setText(Float.toString(C.peekC()));
             }
         });
         
@@ -102,8 +100,7 @@ public class Controler {
                 	System.out.println(C.substractC());
                 	changetxt(txt);
                 	
-                
-//                txt.setText(Float.toString(C.peekC()));
+              
             }
         });
         
@@ -115,8 +112,6 @@ public class Controler {
                 	C.multiplyC();
                     changetxt(txt);
        
-                
-//                txt.setText(Float.toString(C.peekC()));
             }
         });
         
@@ -154,7 +149,7 @@ public class Controler {
             @Override
             public void handle(ActionEvent event) {
             	txt[4].setText(Float.toString(Float.parseFloat(txt[4].getText()) * (-1)));
-            	//txt[4].setText(Integer.toString(convertToValue(txt[4]) * (-1)));
+   
                 
             }
         });
@@ -167,7 +162,7 @@ public class Controler {
             	C.pushC(float0);
             	changetxt(txt);
             	System.out.println(C.peekC());
-//                txt.setText("0.00");
+
             }
         });
 

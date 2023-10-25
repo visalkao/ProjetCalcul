@@ -50,18 +50,7 @@ public class View extends Application {
             
         } 
 
-        
-//        StackPane root = new StackPane();
-        //root.getChildren().add(btn);
-//        primaryStage.setScene(new Scene(vbox, 300, 250));
-//        primaryStage.show();
-//        
-        
-//        primaryStage.setScene(null);
-        
-        
- //think of adding try catch blocks to the code 
-//        Button[] btn = new Button[10];
+
         Button[] btn = new Button[10];
         for(int i=0;i<10;i++) {
         	
@@ -155,16 +144,7 @@ public class View extends Application {
         GridPane.setRowIndex(backSpaceSign, 1);
         GridPane.setColumnIndex(backSpaceSign, 1); 
      
-        
-        
-        
-        
-      
-//        
-//        
-//        
-
-//        
+     
         GridPane grid = new GridPane();
         GridPane newgrid = new GridPane();
         
