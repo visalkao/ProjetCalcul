@@ -12,13 +12,13 @@ import javafx.stage.Stage;
 public class Controler {
     private CalculatorModel C;
     private Text[] txt;
-    private void openPopup() {
+    private void openPopup(String printText) {
         Stage popupStage = new Stage();
         popupStage.setTitle("Error!");
         Button closeButton = new Button("Close");
         closeButton.setStyle("-fx-background-color: #8B0000; -fx-text-fill: white;");
         Text txt = new Text();
-        txt.setText("We can't divide with 0");
+        txt.setText(printText);
 //        Rectangle rectangle=new Rectangle(475,30);
         closeButton.setOnAction(e -> popupStage.close());
         StackPane s1=new StackPane();
@@ -48,6 +48,8 @@ public class Controler {
 
         popupStage.show();
     }
+    
+    
     public Controler(CalculatorModel C, Text[] txt) {
         this.C = C;
         this.txt = txt;
@@ -57,14 +59,14 @@ public class Controler {
     	txt[3].setText(Float.toString(C.peekC(C.sizeC()-1)));
     	for (int i=0;i<3;i++) {
     		txt[i].setText(Float.toString(C.peekC(C.sizeC()-4+i)));
-    		if(txt[i].getText() == "NaN")
-    		{
-    			txt[i].setText("0.00");
-    		}
+//    		if(txt[i].getText() == "NaN")
+//    		{
+//    			txt[i].setText("0.00");
+//    		}
     	}
-    	if(txt[3].getText() == "NaN") {
-    		txt[3].setText("0.00");
-    	}
+//    	if(txt[3].getText() == "NaN") {
+//    		txt[3].setText("0.00");
+//    	}
     }
     public void setButtonHandlers(Button[] numberButtons, Button plusSign,Button sustractSign, Button multipleSign, 
     		Button divideSign, Button addToStackButton, Button clearButton, Button commaButton, Button changeSign, Button swap) {
@@ -88,10 +90,19 @@ public class Controler {
             public void handle(ActionEvent event) {
                
                
-                	System.out.println(C.addC());
+                	
         
-                	changetxt(txt);
-           
+//                	changetxt(txt);
+                	
+                	if(txt[2].getText() == "NaN" ) {
+                		
+                		openPopup("The Stack is empty!");
+                	}else {
+                		System.out.println(C.addC());
+                        changetxt(txt);
+                        
+                	}
+                	System.out.println("Text 3 =" + txt[3].getText());
                 
             }
         });
@@ -100,9 +111,15 @@ public class Controler {
             @Override
             public void handle(ActionEvent event) {
  
-                	System.out.println(C.substractC());
-                	changetxt(txt);
                 	
+                	if(txt[2].getText() == "NaN" ) {
+                		
+                		openPopup("The Stack is empty!");
+                	}else {
+                		System.out.println(C.substractC());
+                    	changetxt(txt);
+                        
+                	}
                 	
               
             }
@@ -113,8 +130,15 @@ public class Controler {
             public void handle(ActionEvent event) {
                
                
-                	C.multiplyC();
-                    changetxt(txt);
+                	
+                	if(txt[2].getText() == "NaN" ) {
+                		
+                		openPopup("The Stack is empty!");
+                	}else {
+                		System.out.println(C.multiplyC());
+                    	changetxt(txt);
+                        
+                	}
        
             }
         });
@@ -126,8 +150,12 @@ public class Controler {
         		System.out.print("txt4 = " + txt[3].getText());
             	if(txt[3].getText() == "0.0" || txt[3].getText() == "0.00") {
             		
-            		openPopup();
-            	}else {
+            		openPopup("Can't divide by 0!");
+            	}else if(txt[2].getText() == "NaN"){
+
+            		openPopup("The Stack is empty!");
+            	}
+            	else{
             		C.divideC();
                     changetxt(txt);
                     
