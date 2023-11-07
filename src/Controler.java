@@ -49,7 +49,7 @@ public class Controler implements ControlerInterface{
         popupStage.show();
     }
     
-    
+    public Controler() {}
     public Controler(CalculatorModel C, Text[] txt) {
         this.C = C;
         this.txt = txt;

@@ -14,13 +14,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 
-public class View extends Application {
-	CalculatorModel C = new CalculatorModel();
+public class View {
+	
 	private Text displayText;
-	private Controler Controler;
-    public static void main(String[] args) {
-        launch(args);
-    }
+	VBox vbox = new VBox(1);
+//	private Controler Controler;
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
     //recheck what this does
     public Integer convertToValue(Text inputText) {
     	String tmptext = inputText.getText();
@@ -32,13 +33,10 @@ public class View extends Application {
     	
     	return parsedValue;
     }
-    
-    @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("RPN Calculator");
-        displayText = new Text("0.00");
+    public View(CalculatorModel C, Controler Controler) {
+    	displayText = new Text("0.00");
         
-        VBox vbox = new VBox(1);
+    	
         Text[] txt = new Text[5];
         for (int i = 0; i < 5; i++) 
         { 	txt[i]= new Text("0.00");
@@ -187,7 +185,9 @@ public class View extends Application {
     	Controler = new Controler(C, txt);
         Controler.setButtonHandlers(btn, plusSign, minusSign, multipleSign, divideSign, addtoStackSign, backSpaceSign, commaBtn, changeSign, swap);
         
-	    primaryStage.setScene(new Scene(vbox, 500, 500));
-	    primaryStage.show();
     }
+    public VBox getVbox() {
+    	return vbox;
+    }
+    
 }
