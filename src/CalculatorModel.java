@@ -1,12 +1,6 @@
 import java.util.*;
 //put the interface in another file 
-interface CalculatrorModelInterface{
-	float pushC(float a);
-	public float popC();
-	public float peekC();
-	public void clearC();
-	
-}
+
 
 public class CalculatorModel implements CalculatrorModelInterface {
 	private float accumulateur;

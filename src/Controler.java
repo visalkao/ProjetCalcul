@@ -9,10 +9,10 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class Controler {
+public class Controler implements ControlerInterface{
     private CalculatorModel C;
     private Text[] txt;
-    private void openPopup(String printText) {
+    public void openPopup(String printText) {
         Stage popupStage = new Stage();
         popupStage.setTitle("Error!");
         Button closeButton = new Button("Close");
